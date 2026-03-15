@@ -44,7 +44,6 @@ INSERT INTO translations (locale, section, key, value) VALUES
 ('en', 'dashboard', 'in_stock', 'In Stock'),
 ('en', 'dashboard', 'description', 'Description');
 
--- Swedish (English + "-(sw)")
 INSERT INTO translations (locale, section, key, value) VALUES
 ('sv', 'nav', 'home', 'Home-(sw)'),
 ('sv', 'nav', 'order', 'Order-(sw)'),
