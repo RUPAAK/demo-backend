@@ -1,15 +1,17 @@
 require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
+const cookieParser = require("cookie-parser");
 const { pool } = require("./lib/db");
 const translationsRouter = require("./routes/translations");
 
 const app = express();
-app.use(cors({ origin: true }));
+app.use(cors({ origin: true, credentials: true }));
 app.use(express.json());
+app.use(cookieParser());
 
 app.get("/health", (req, res) => {
-  res.json({ ok: true });
+  res.json({ data: { ok: true } });
 });
 
 app.use("/api/translations", translationsRouter);
