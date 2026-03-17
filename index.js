@@ -1,9 +1,11 @@
 require("dotenv").config();
 const express = require("express");
+const cors = require("cors");
 const { pool } = require("./lib/db");
 const translationsRouter = require("./routes/translations");
 
 const app = express();
+app.use(cors({ origin: true }));
 app.use(express.json());
 
 app.get("/health", (req, res) => {

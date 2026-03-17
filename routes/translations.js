@@ -18,11 +18,8 @@ router.get("/meta/sections", (req, res) => {
 router.get("/", async (req, res, next) => {
   try {
     const locale = req.query.locale || "en";
-    const section = req.query.section || null;
-    const data = await getKeys(locale, section);
-    res.json({
-      data,
-    });
+    const data = await getTranslations(locale, null);
+    res.json({ data });
   } catch (e) {
     next(e);
   }
