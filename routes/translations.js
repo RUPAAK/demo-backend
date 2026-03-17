@@ -15,6 +15,19 @@ router.get("/meta/sections", (req, res) => {
   res.json(SECTIONS);
 });
 
+router.get("/", async (req, res, next) => {
+  try {
+    const locale = req.query.locale || "en";
+    const section = req.query.section || null;
+    const data = await getKeys(locale, section);
+    res.json({
+      data,
+    });
+  } catch (e) {
+    next(e);
+  }
+});
+
 router.get("/:locale", async (req, res, next) => {
   try {
     const { locale } = req.params;
