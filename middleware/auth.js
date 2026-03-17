@@ -1,13 +1,20 @@
-const { verifyToken } = require("../lib/auth");
+const { verifyToken, findUserById } = require("../lib/auth");
 
-function requireAuth(req, res, next) {
+function getToken(req) {
   const auth = req.headers.authorization;
-  const token = auth && auth.startsWith("Bearer ") ? auth.slice(7) : null;
-  if (!token) {
-    return res.status(401).json({ error: "Token required" });
-  }
+  if (auth && auth.startsWith("Bearer ")) return auth.slice(7);
+  return req.cookies?.access_token ?? null;
+}
+
+async function requireAuth(req, res, next) {
+  const token = getToken(req);
+  if (!token) return res.status(401).json({ error: "Token required" });
   try {
-    req.tokenPayload = verifyToken(token);
+    const payload = verifyToken(token);
+    const user = await findUserById(payload.sub);
+    if (!user) return res.status(401).json({ error: "User not found" });
+    req.tokenPayload = payload;
+    req.user = user;
     next();
   } catch (e) {
     if (e.name === "JsonWebTokenError" || e.name === "TokenExpiredError") {
