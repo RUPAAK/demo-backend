@@ -47,7 +47,10 @@ INSERT INTO translations (locale, section, key, value) VALUES
 ('en', 'dashboard', 'price', 'Price'),
 ('en', 'dashboard', 'unit', 'Unit'),
 ('en', 'dashboard', 'in_stock', 'In Stock'),
-('en', 'dashboard', 'description', 'Description');
+('en', 'dashboard', 'description', 'Description'),
+('en', 'sidebar', 'menu', 'Menu'),
+('en', 'sidebar', 'price_list', 'Price List'),
+('en', 'sidebar', 'logout', 'Log out');
 
 INSERT INTO translations (locale, section, key, value) VALUES
 ('sv', 'nav', 'home', 'Hem'),
@@ -85,4 +88,7 @@ INSERT INTO translations (locale, section, key, value) VALUES
 ('sv', 'dashboard', 'price', 'Pris'),
 ('sv', 'dashboard', 'unit', 'Enhet'),
 ('sv', 'dashboard', 'in_stock', 'I lager'),
-('sv', 'dashboard', 'description', 'Beskrivning');
+('sv', 'dashboard', 'description', 'Beskrivning'),
+('sv', 'sidebar', 'menu', 'Meny'),
+('sv', 'sidebar', 'price_list', 'Prislista'),
+('sv', 'sidebar', 'logout', 'Logga ut');
