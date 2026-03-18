@@ -10,6 +10,9 @@ app.use(cors({ origin: true, credentials: true }));
 app.use(express.json());
 app.use(cookieParser());
 
+app.get("/", (req, res) => {
+  res.json({ data: { ok: "Hello from server!" } });
+});
 app.get("/health", (req, res) => {
   res.json({ data: { ok: true } });
 });
