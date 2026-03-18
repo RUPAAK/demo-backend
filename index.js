@@ -21,6 +21,10 @@ app.use("/api/translations", translationsRouter);
 app.use("/api/auth", require("./routes/auth"));
 app.use("/api/products", require("./routes/products"));
 
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "dist", "index.html"));
+});
+
 const port = process.env.PORT || 3000;
 const { seed } = require("./lib/seed");
 
