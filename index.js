@@ -8,7 +8,8 @@ const translationsRouter = require("./routes/translations");
 const app = express();
 app.use(
   cors({
-    origin: [process.env.FRONTEND_URL, "http://localhost:4173"],
+    origin: ["http://16.171.10.5:4173", "http://localhost:4173"],
+    credentials: true,
   }),
 );
 app.use(express.json());
