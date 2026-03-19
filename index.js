@@ -6,7 +6,11 @@ const { pool } = require("./lib/db");
 const translationsRouter = require("./routes/translations");
 
 const app = express();
-app.use(cors({ origin: true, credentials: true }));
+app.use(
+  cors({
+    origin: ["http://16.171.10.5:4173", "http://localhost:4173"],
+  }),
+);
 app.use(express.json());
 app.use(cookieParser());
 
